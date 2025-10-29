@@ -52,7 +52,7 @@
       <p style="margin-top:1rem; color:var(--muted); line-height:1.5;">{{ company.about }}</p>
 
       <div class="values">
-        {% for v in company.values %}
+        {% for v in company['values'] %}
           <div class="pill">{{ v }}</div>
         {% endfor %}
       </div>
