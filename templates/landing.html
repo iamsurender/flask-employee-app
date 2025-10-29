@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Arclight Solutions — Talent & Teams</title>
+  <style>
+    :root{
+      --bg:#f5f7fa; --card:#ffffff; --muted:#6b7280; --accent:#2563eb;
+      --nav:#1e293b; --glass: rgba(255,255,255,0.6);
+    }
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial; background:var(--bg); margin:0; color:#0f172a;}
+    header{background:linear-gradient(90deg,var(--nav),#334155); color:white; padding:1rem 1.25rem; display:flex;align-items:center;justify-content:space-between;}
+    .brand{font-weight:700; font-size:1.15rem; letter-spacing:0.3px;}
+    nav a{color:rgba(255,255,255,0.9); text-decoration:none; margin-left:1rem; font-weight:600; font-size:0.95rem;}
+    .hero{
+      max-width:1100px; margin:2.2rem auto; display:grid; grid-template-columns:1fr 420px; gap:2rem; align-items:center;
+    }
+    .card{background:var(--card); border-radius:12px; box-shadow:0 6px 18px rgba(10,20,30,0.06); padding:2rem;}
+    .hero-left h1{margin:0; font-size:2rem; color:#0f172a;}
+    .tag{color:var(--muted); margin-top:0.6rem;}
+    .cta-row{margin-top:1.2rem;}
+    .btn{background:var(--accent); color:white; padding:0.6rem 1.05rem; border-radius:8px; text-decoration:none; font-weight:600; display:inline-block;}
+    .btn.secondary{background:transparent; border:1px solid #e6edf8; color:#0f172a; margin-left:0.6rem;}
+    .hero-img{border-radius:12px; overflow:hidden; display:block;}
+    .values{display:flex; gap:0.6rem; margin-top:1rem; flex-wrap:wrap;}
+    .pill{background:#f1f5f9; color:#0f172a; padding:0.4rem 0.7rem; border-radius:999px; font-size:0.9rem;}
+    .people{margin-top:1.2rem; display:flex; gap:0.8rem; align-items:center;}
+    .person{display:flex;gap:0.7rem;align-items:center}
+    .person img{width:56px;height:56px;border-radius:10px;object-fit:cover;box-shadow:0 6px 14px rgba(2,6,23,0.06)}
+    footer{margin-top:3rem; text-align:center; color:var(--muted); padding:2rem 0;}
+    .nav-actions{display:flex; align-items:center;}
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr; padding:1rem;}
+      nav a{display:none}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">Arclight Solutions</div>
+    <div class="nav-actions">
+      <a href="/" style="color:rgba(255,255,255,0.85);margin-right:14px;text-decoration:none;">Home</a>
+      <a href="/employees" style="background:rgba(255,255,255,0.12);padding:0.4rem 0.8rem;border-radius:8px;color:white;text-decoration:none;">Employee Directory</a>
+    </div>
+  </header>
+
+  <main class="hero" role="main">
+    <section class="hero-left card">
+      <h1>{{ company.name }}</h1>
+      <div class="tag">{{ company.tagline }}</div>
+      <p style="margin-top:1rem; color:var(--muted); line-height:1.5;">{{ company.about }}</p>
+
+      <div class="values">
+        {% for v in company.values %}
+          <div class="pill">{{ v }}</div>
+        {% endfor %}
+      </div>
+
+      <div class="cta-row">
+        <a class="btn" href="/employees">View Employees</a>
+        <a class="btn secondary" href="#about">About Us</a>
+      </div>
+
+      <div class="people" style="margin-top:1.6rem;">
+        {% for e in employees %}
+        <div class="person">
+          <img src="{{ e.photo }}" alt="{{ e.name }}">
+          <div>
+            <div style="font-weight:700;">{{ e.name }}</div>
+            <div style="color:var(--muted);font-size:0.9rem;">{{ e.role }}</div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <aside class="card hero-right">
+      <img class="hero-img" src="{{ company.hero_image }}" alt="Office" style="width:100%; height:320px; object-fit:cover;">
+      <div style="margin-top:1rem;">
+        <h3 style="margin:0 0 0.5rem 0;color:#0f172a;">Careers & Culture</h3>
+        <p style="color:var(--muted);margin:0 0 0.6rem 0; line-height:1.4;">
+          We hire curious builders — across software, product and design. Every quarter we run learning sprints, mentorship hours and team hackathons.
+        </p>
+
+        <div style="display:flex; gap:0.6rem; margin-top:0.8rem;">
+          <a class="btn" href="/employees">Meet the Team</a>
+          <a class="btn secondary" href="#contact">Contact</a>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    © {{ 2025 }} Arclight Solutions — Built for clarity and impact.
+  </footer>
+</body>
+</html>

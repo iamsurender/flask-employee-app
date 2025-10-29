@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Employee Directory — Arclight</title>
+  <style>
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:#f5f7fa;margin:0;color:#0f172a;}
+    nav{background:linear-gradient(90deg,#1e293b,#334155); color:white; padding:12px 20px; display:flex;justify-content:space-between;align-items:center;}
+    nav .brand{font-weight:700}
+    .container{max-width:900px;margin:28px auto;background:white;border-radius:14px;padding:24px;box-shadow:0 6px 18px rgba(10,20,30,0.06)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+    .card{background:#fff;border-radius:12px;padding:14px;border:1px solid #eef2f7;display:flex;gap:12px;align-items:center;transition:transform .14s}
+    .card:hover{transform:translateY(-4px)}
+    .avatar{width:64px;height:64px;border-radius:8px;object-fit:cover;box-shadow:0 8px 18px rgba(2,6,23,0.06)}
+    .meta{flex:1}
+    .name{font-weight:700}
+    .role{color:#6b7280}
+    .actions{display:flex;gap:8px}
+    .btn{background:#2563eb;color:white;padding:0.45rem 0.8rem;border-radius:8px;text-decoration:none;font-weight:600}
+    .danger{background:#ef4444}
+    .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+    .search{padding:8px 12px;border-radius:8px;border:1px solid #e6edf5;width:260px}
+    footer{margin-top:20px;text-align:center;color:#6b7280;padding:18px}
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="brand">Arclight Solutions</div>
+    <div>
+      <a href="/" style="color:rgba(255,255,255,0.9); text-decoration:none; margin-right:12px">Home</a>
+      <a href="#" style="color:rgba(255,255,255,0.9); text-decoration:none">Careers</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="topbar">
+      <h2 style="margin:0">Employee Directory</h2>
+      <div>
+        <input class="search" placeholder="Search employee..." />
+        <a href="/add" class="btn" style="margin-left:10px">Add Employee</a>
+      </div>
+    </div>
+
+    <div class="grid">
+      {% for emp in employees %}
+      <div class="card">
+        <img class="avatar" src="{{ emp.photo }}" alt="{{ emp.name }}">
+        <div class="meta">
+          <div class="name">{{ emp.name }}</div>
+          <div class="role">{{ emp.role }}</div>
+        </div>
+        <div class="actions">
+          <a href="#" class="btn">Profile</a>
+          <a href="/delete/{{ emp.id }}" class="btn danger">Remove</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </main>
+
+  <footer>© {{ 2025 }} Arclight Solutions — People-first engineering.</footer>
+</body>
+</html>
