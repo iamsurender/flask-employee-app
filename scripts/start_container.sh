@@ -5,4 +5,4 @@ set -e
 docker pull suren26/flask-employee-app:latest
 
 # Run the Docker image as a container
-docker run -d -p 5000:5000 flask-employee-app:latest
+docker run -d -p 5000:5000 suren26/flask-employee-app:latest
